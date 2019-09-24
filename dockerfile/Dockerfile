@@ -26,7 +26,7 @@ unzip
 COPY default /etc/nginx/sites-available/default
 
 # unzip Documentov files
-RUN unzip ../Documentov.zip -d /var/www/html/
+RUN unzip Documentov.zip -d /var/www/html/
 
 WORKDIR /var/www/html/
 RUN chown -R www-data image system/storage config.php
