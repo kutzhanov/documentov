@@ -26,6 +26,7 @@ unzip
 COPY default /etc/nginx/sites-available/default
 
 # unzip Documentov files
+COPY Documentov.zip .
 RUN unzip Documentov.zip -d /var/www/html/
 
 WORKDIR /var/www/html/
