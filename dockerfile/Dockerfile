@@ -1,6 +1,9 @@
 # Dockerfile to setup Documentov on Ubuntu 18.04
 
 FROM ubuntu:18.04
+ENV TZ=Asia/Almaty
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 LABEL maintainer="kutzhanov@gmail.com"
 
 # installation of Nginx + PHP-FPM + MySQL
