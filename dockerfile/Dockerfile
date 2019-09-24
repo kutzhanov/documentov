@@ -40,11 +40,10 @@ RUN service nginx restart
 EXPOSE 80
 
 # Create mysql database and user
-RUN /etc/init.d/mysql start && sleep 5
-# RUN /bin/bash -c “/usr/bin/mysqld_safe --skip-grant-tables &” && sleep 5
-RUN mysql -u root -e "CREATE USER 'documentov'@'localhost' IDENTIFIED BY 'password';"
-RUN mysql -u root -e "CREATE DATABASE documentov CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
-RUN mysql -u root -e "GRANT ALL PRIVILEGES ON documentov . * TO 'documentov'@'localhost';"
-RUN mysql -u root -e "FLUSH PRIVILEGES;"
+RUN /etc/init.d/mysql start && sleep 5 &&
+mysql -u root -e "CREATE USER 'documentov'@'localhost' IDENTIFIED BY 'password';" &&
+mysql -u root -e "CREATE DATABASE documentov CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;" &&
+mysql -u root -e "GRANT ALL PRIVILEGES ON documentov . * TO 'documentov'@'localhost';" &&
+mysql -u root -e "FLUSH PRIVILEGES;"
 
-CMD [“mysqld”]
+# CMD [“mysqld”]
