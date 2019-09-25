@@ -27,8 +27,8 @@ unzip
 # copy nginx site configuration
 COPY default /etc/nginx/sites-available/default
 
-COPY services.sh .
-RUN chmod +x services.sh
+COPY services.sh /root/services.sh
+RUN chmod +x /root/services.sh
 
 # unzip Documentov files
 COPY Documentov.zip .
@@ -38,9 +38,6 @@ WORKDIR /var/www/html/
 RUN chown -R www-data image system/storage config.php
 RUN chmod -R 755 *
 RUN chmod -R 777 config.php image system/storage
-
-# restart nginx server
-# RUN service nginx restart
 
 EXPOSE 80
 
@@ -53,9 +50,4 @@ mysql -u root -e "CREATE DATABASE documentov CHARACTER SET utf8mb4 COLLATE utf8m
 mysql -u root -e "GRANT ALL PRIVILEGES ON documentov . * TO 'documentov'@'localhost';" && \
 mysql -u root -e "FLUSH PRIVILEGES;"
 
-RUN service mysql start
-RUN update-rc.d mysql defaults
-
 CMD /root/services.sh
-# CMD ["nginx", "-g", "daemon off;"]
-# CMD [“mysqld”]
