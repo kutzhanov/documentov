@@ -27,6 +27,9 @@ unzip
 # copy nginx site configuration
 COPY default /etc/nginx/sites-available/default
 
+COPY services.sh .
+RUN chmod +x services.sh
+
 # unzip Documentov files
 COPY Documentov.zip .
 RUN unzip Documentov.zip -d /var/www/html/
@@ -53,5 +56,6 @@ mysql -u root -e "FLUSH PRIVILEGES;"
 RUN service mysql start
 RUN update-rc.d mysql defaults
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD /root/services.sh
+# CMD ["nginx", "-g", "daemon off;"]
 # CMD [“mysqld”]
