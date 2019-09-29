@@ -56,5 +56,6 @@ mysql -u root -e "CREATE DATABASE documentov CHARACTER SET utf8mb4 COLLATE utf8m
 mysql -u root -e "GRANT ALL PRIVILEGES ON documentov . * TO 'documentov'@'localhost';" && \
 mysql -u root -e "FLUSH PRIVILEGES;"
 
-CMD ./root/services.sh
+WORKDIR /root/
+CMD ./services.sh
 # CMD ["mysqld"]
