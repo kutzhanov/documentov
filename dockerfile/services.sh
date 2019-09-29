@@ -38,8 +38,3 @@ while sleep 60; do
     exit 1
   fi
 done
-
-#update-rc.d mysql defaults
-#update-rc.d nginx enable
-#chkconfig php-fpm on
-#update-rc.d php7.2-fpm enable
