@@ -27,23 +27,23 @@ zip \
 unzip
 
 # copy nginx site configuration
-# COPY default /etc/nginx/sites-available/default
+COPY default /etc/nginx/sites-available/default
 
 COPY services.sh /root/services.sh
 RUN chmod +x /root/services.sh
 
 # unzip Documentov files
 COPY Documentov.zip .
-# RUN unzip Documentov.zip -d /var/www/html/
+RUN unzip Documentov.zip -d /var/www/html/
 
-# WORKDIR /var/www/html/
-# RUN chown -R www-data image system/storage config.php
-# RUN chmod -R 755 *
-# RUN chmod -R 777 config.php image system/storage
+WORKDIR /var/www/html/
+RUN chown -R www-data image system/storage config.php
+RUN chmod -R 755 *
+RUN chmod -R 777 config.php image system/storage
 
 EXPOSE 80
 
-# VOLUME ["/var/www/html/", "/var/log/nginx/"]
+VOLUME ["/var/www/html/", "/var/log/nginx/"]
 
 # Create mysql database and user
 RUN /etc/init.d/mysql start && sleep 5 && \
@@ -52,5 +52,5 @@ mysql -u root -e "CREATE DATABASE documentov CHARACTER SET utf8mb4 COLLATE utf8m
 mysql -u root -e "GRANT ALL PRIVILEGES ON documentov . * TO 'documentov'@'localhost';" && \
 mysql -u root -e "FLUSH PRIVILEGES;"
 
-# CMD /root/services.sh
-CMD ["mysqld"]
+CMD /root/services.sh
+# CMD ["mysqld"]
