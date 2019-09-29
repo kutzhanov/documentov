@@ -10,6 +10,7 @@ LABEL maintainer="kutzhanov@gmail.com"
 
 # installation of Nginx + PHP-FPM + MySQL
 RUN apt-get update -y && apt-get install --no-install-recommends --no-install-suggests -y \
+dialog \
 apt-utils \
 nginx \
 mysql-server \
