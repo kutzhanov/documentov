@@ -58,4 +58,3 @@ mysql -u root -e "FLUSH PRIVILEGES;"
 
 WORKDIR /root/
 CMD ./services.sh
-# CMD ["mysqld"]
