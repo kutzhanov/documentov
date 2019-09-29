@@ -9,7 +9,8 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 LABEL maintainer="kutzhanov@gmail.com"
 
 # installation of Nginx + PHP-FPM + MySQL
-RUN apt update -y && apt install --no-install-recommends --no-install-suggests -y \
+RUN apt-get update -y && apt-get install --no-install-recommends --no-install-suggests -y \
+apt-utils \
 nginx \
 mysql-server \
 php7.2 \
