@@ -30,6 +30,10 @@ unzip
 COPY default /etc/nginx/sites-available/default
 
 COPY services.sh /root/services.sh
+COPY start_mysql.sh /root/start_mysql.sh
+COPY start_nginx.sh /root/start_nginx.sh
+COPY start_php_fpm.sh /root/start_php_fpm.sh
+RUN chmod +x /root/start*
 RUN chmod +x /root/services.sh
 
 # unzip Documentov files
