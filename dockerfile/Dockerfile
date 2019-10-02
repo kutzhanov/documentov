@@ -47,7 +47,7 @@ RUN chmod -R 777 config.php image system/storage
 
 EXPOSE 80
 
-VOLUME ["/var/www/html/", "/var/log/nginx/"]
+VOLUME ["/var/www/html/", "/var/log/nginx/", "/var/lib/mysql/"]
 
 # Create mysql database and user
 RUN /etc/init.d/mysql start && sleep 5 && \
